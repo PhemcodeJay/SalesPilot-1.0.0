@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Stock Records</title>
+    <!-- Add your CSS styles for better presentation -->
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Records</h1>
+
+    <?php
+    // Establish a connection to your MySQL database
+    $servername = "your_server_name";
+    $username = "your_username";
+    $password = "your_password";
+    $dbname = "your_database_name";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check the connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Retrieve stock information from the database
+    $sql = "SELECT * FROM product_stock";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Display stock information in a table
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Product Name</th><th>Stock Quantity</th><th>Sales Price</th><th>Cost Price</th><th>Date and Time</th><th>Staff Name</th><th>Contact</th><th>Category</th></tr>";
+
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row['id'] . "</td>";
+            echo "<td>" . $row['product_name'] . "</td>";
+            echo "<td>" . $row['stock_qty'] . "</td>";
+            echo "<td>" . $row['sales_price'] . "</td>";
+            echo "<td>" . $row['cost_price'] . "</td>";
+            echo "<td>" . $row['datetime'] . "</td>";
+            echo "<td>" . $row['staff_name'] . "</td>";
+            echo "<td>" . $row['contact'] . "</td>";
+            echo "<td>" . $row['category'] . "</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    } else {
+        echo "No records found";
+    }
+
+    // Close the database connection
+    $conn->close();
+    ?>
+
+    <!-- Add page links or navigation as needed -->
+    <div>
+        <a href="index.html">Back to Home</a> |
+        <a href="sales.php">Sales</a> |
+        <a href="products.php">Products</a> |
+        <a href="inventory.php">Inventory</a> |
+        <a href="reports.php">Reports</a> |
+        <a href="analytics.php">Analytics</a> |
+        <a href="profile.php">Profile</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Info</title>
+    <style>
+        /* Add your CSS styles for the page layout here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #profile-pic {
+            max-width: 150px;
+            border-radius: 50%;
+        }
+
+        /* Add additional styling for other elements as needed */
+    </style>
+</head>
+<body>
+    <h1>Staff Information</h1>
+
+    <!-- Profile Section -->
+    <div>
+        <img id="profile-pic" src="path/to/default-profile-pic.jpg" alt="Profile Picture">
+        <h2>Staff Name</h2>
+        <!-- Add more details about the staff here -->
+    </div>
+
+    <!-- Sales Analytics Section -->
+    <h2>Sales Analytics</h2>
+    <label for="select-date">Select Date: </label>
+    <input type="date" id="select-date">
+    
+    <!-- Display Quantity and Value Sold -->
+    <div>
+        <p>Product Quantity Sold: <span id="quantity-sold">0</span></p>
+        <p>Product Value Sold: $<span id="value-sold">0.00</span></p>
+    </div>
+
+    <script>
+        // Add your JavaScript code for updating quantity and value based on selected date here
+        document.getElementById('select-date').addEventListener('change', updateSalesInfo);
+
+        function updateSalesInfo() {
+            // Fetch and update the quantity and value sold for the selected date
+            // You can use AJAX to fetch data from your backend or simulate it for testing purposes
+            let selectedDate = document.getElementById('select-date').value;
+            
+            // Example: Simulating data update
+            let simulatedData = {
+                quantitySold: Math.floor(Math.random() * 100),
+                valueSold: (Math.random() * 1000).toFixed(2)
+            };
+
+            // Update the UI with the simulated data
+            document.getElementById('quantity-sold').textContent = simulatedData.quantitySold;
+            document.getElementById('value-sold').textContent = simulatedData.valueSold;
+        }
+    </script>
+</body>
+</html>
+

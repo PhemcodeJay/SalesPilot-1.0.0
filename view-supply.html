@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Supply Information</title>
+</head>
+<body>
+    <h1>Supply Information</h1>
+
+    <?php
+        // Fetch and display supply information from the database
+        // Implement this part in a separate PHP file (e.g., fetch_supply.php)
+        // Use appropriate database connection and query mechanisms
+        $servername = "your_database_server";
+        $username = "your_username";
+        $password = "your_password";
+        $dbname = "your_database_name";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT * FROM supply";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<table border='1'>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Supply Quantity</th>
+                        <th>Sales Price</th>
+                        <th>Cost Price</th>
+                        <th>Date and Time</th>
+                        <th>Supplier Name</th>
+                        <th>Supplier Contact</th>
+                        <th>Product Category</th>
+                    </tr>";
+
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td>".$row["id"]."</td>
+                        <td>".$row["productName"]."</td>
+                        <td>".$row["supplyQty"]."</td>
+                        <td>".$row["salesPrice"]."</td>
+                        <td>".$row["costPrice"]."</td>
+                        <td>".$row["datetime"]."</td>
+                        <td>".$row["supplierName"]."</td>
+                        <td>".$row["supplierContact"]."</td>
+                        <td>".$row["productCategory"]."</td>
+                    </tr>";
+            }
+
+            echo "</table>";
+        } else {
+            echo "0 results";
+        }
+
+        $conn->close();
+    ?>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>

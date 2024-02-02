@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Supply</title>
+</head>
+<body>
+    <h1>Product Supply</h1>
+
+    <form action="process_supply.php" method="post">
+        <label for="productName">Product Name:</label>
+        <input type="text" name="productName" required><br>
+
+        <label for="supplyQty">Supply Quantity:</label>
+        <input type="number" name="supplyQty" required><br>
+
+        <label for="salesPrice">Sales Price:</label>
+        <input type="number" name="salesPrice" required><br>
+
+        <label for="costPrice">Cost Price:</label>
+        <input type="number" name="costPrice" required><br>
+
+        <label for="datetime">Date and Time:</label>
+        <input type="datetime-local" name="datetime" required><br>
+
+        <label for="supplierName">Supplier Name:</label>
+        <input type="text" name="supplierName" required><br>
+
+        <label for="supplierContact">Supplier Contact:</label>
+        <input type="text" name="supplierContact" required><br>
+
+        <label for="productCategory">Product Category:</label>
+        <select name="productCategory">
+            <option value="category1">Category 1</option>
+            <option value="category2">Category 2</option>
+            <!-- Add more categories as needed -->
+        </select><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>

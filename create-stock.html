@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Stock Management</title>
+</head>
+<body>
+    <h1>Product Stock Management</h1>
+    
+    <form action="insert.php" method="POST">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" required><br>
+
+        <label for="stockQty">Stock Quantity:</label>
+        <input type="number" id="stockQty" name="stockQty" required><br>
+
+        <label for="salesPrice">Sales Price:</label>
+        <input type="number" step="0.01" id="salesPrice" name="salesPrice" required><br>
+
+        <label for="costPrice">Cost Price:</label>
+        <input type="number" step="0.01" id="costPrice" name="costPrice" required><br>
+
+        <label for="datetime">Date and Time:</label>
+        <input type="datetime-local" id="datetime" name="datetime" required><br>
+
+        <label for="staffName">Staff Name:</label>
+        <input type="text" id="staffName" name="staffName" required><br>
+
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" name="contact" required><br>
+
+        <label for="category">Product Category:</label>
+        <select id="category" name="category">
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="books">Books</option>
+            <!-- Add more categories as needed -->
+        </select><br>
+
+        <input type="submit" value="Add to Inventory">
+    </form>
+
+    <div>
+        <!-- Page Links -->
+        <a href="sales.php">Sales</a> |
+        <a href="products.php">Products</a> |
+        <a href="inventory.php">Inventory</a> |
+        <a href="reports.php">Reports</a> |
+        <a href="analytics.php">Analytics</a> |
+        <a href="profile.php">Profile</a>
+    </div>
+</body>
+</html>
