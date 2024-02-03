@@ -21,21 +21,21 @@
 
 DROP TABLE IF EXISTS `business_records`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `business_records` (
   `id_business` int NOT NULL AUTO_INCREMENT,
-  `Username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `BusinessName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Password` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `ConfirmPassword` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Phone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Location` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `activation_code` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `BusinessName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Password` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ConfirmPassword` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Location` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `activation_code` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `profile_image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `profile_image` varchar(255) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_business`,`Username`,`BusinessName`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,12 +54,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
   `categoryname` varchar(255) NOT NULL,
   PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,18 +78,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `failed_jobs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `failed_jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,14 +107,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `inventory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `inventory` (
   `id_inventory` int NOT NULL AUTO_INCREMENT,
   `id_user` int NOT NULL,
-  `Username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Product` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Author` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Product` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Description` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Author` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `SupplyQty` decimal(10,0) NOT NULL,
   `StockQty` decimal(10,0) NOT NULL,
   `CostPrice` decimal(10,2) NOT NULL,
@@ -126,8 +126,8 @@ CREATE TABLE `inventory` (
   `StockValue` decimal(10,2) GENERATED ALWAYS AS ((`StockQty` * `CostPrice`)) STORED,
   `SupplyValue` decimal(10,2) GENERATED ALWAYS AS ((`SupplyQty` * `CostPrice`)) STORED,
   `category_id` int NOT NULL,
-  `DaysOfWeek` enum('Sun','Mon','Tue','Wed','Thu','Fri','Sat') COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `Month` enum('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `DaysOfWeek` enum('Sun','Mon','Tue','Wed','Thu','Fri','Sat') COLLATE utf8_general_ci DEFAULT NULL,
+  `Month` enum('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') COLLATE utf8_general_ci DEFAULT NULL,
   `WeeklyStockQty` int GENERATED ALWAYS AS ((`InventoryQty` - `WeeklySalesQty`)) STORED,
   `DailyStockQty` int GENERATED ALWAYS AS ((`InventoryQty` - `DailySalesQty`)) STORED,
   `MonthlyStockQty` int GENERATED ALWAYS AS ((`InventoryQty` - `MonthlySalesQty`)) STORED,
@@ -141,7 +141,7 @@ CREATE TABLE `inventory` (
   KEY `category_id_idx` (`category_id`),
   CONSTRAINT `category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `business_records` (`id_business`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,13 +160,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `migrations` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,13 +185,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `password_reset_tokens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,14 +209,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `personal_access_tokens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `personal_access_tokens` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `tokenable_id` bigint unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -224,7 +224,7 @@ CREATE TABLE `personal_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,13 +242,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `sales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `sales` (
   `id_sales` int NOT NULL AUTO_INCREMENT,
   `id_business` int NOT NULL,
-  `Username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Product` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Author` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Product` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Author` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `InventoryQty` decimal(10,0) NOT NULL,
   `CostPrice` decimal(10,2) NOT NULL,
   `SalesPrice` decimal(10,2) NOT NULL,
@@ -281,14 +281,14 @@ CREATE TABLE `sales` (
   `YearlyProfit` decimal(10,2) GENERATED ALWAYS AS ((`YearlyRevenue` - `YearlyExpenses`)) STORED,
   `AverageYearlySales` decimal(10,2) GENERATED ALWAYS AS ((`YearlySalesQty` / 12)) STORED,
   `sales_categoryid` int NOT NULL,
-  `DaysOfWeek` enum('Sun','Mon','Tue','Wed','Thu','Fri','Sat') COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `Month` enum('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `DaysOfWeek` enum('Sun','Mon','Tue','Wed','Thu','Fri','Sat') COLLATE utf8_general_ci DEFAULT NULL,
+  `Month` enum('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_sales`,`id_business`,`Username`,`Product`),
   KEY `id_user_idx` (`id_business`),
   KEY `sales_categoryid_idx` (`sales_categoryid`),
   CONSTRAINT `id_business` FOREIGN KEY (`id_business`) REFERENCES `business_records` (`id_business`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `sales_categoryid` FOREIGN KEY (`sales_categoryid`) REFERENCES `category` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,19 +307,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
