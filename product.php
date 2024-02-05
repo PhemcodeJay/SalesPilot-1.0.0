@@ -119,7 +119,7 @@ $result_metrics = $stmt_metrics->get_result();
 // Function to fetch the product with the highest inventory value
 function fetchProductWithHighestTotalRevenue($connection, $Username)
 {
-    $stmt = $connection->prepare("SELECT Product FROM inventory WHERE Username = ? ORDER BY TotalRevenue DESC LIMIT 1");
+    $stmt = $connection->prepare("SELECT Product FROM inventory WHERE Username = ? ORDER BY InventoryValue DESC LIMIT 1");
     $stmt->bind_param('s', $Username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -137,7 +137,7 @@ $HighestTotalRevenue = fetchProductWithHighestTotalRevenue($connection, $Usernam
 // Function to fetch the product with the lowest inventory value
 function fetchProductWithLowestTotalRevenue($connection, $Username)
 {
-    $stmt = $connection->prepare("SELECT Product FROM inventory WHERE Username = ? ORDER BY TotalRevenue ASC LIMIT 1");
+    $stmt = $connection->prepare("SELECT Product FROM inventory WHERE Username = ? ORDER BY InventoryValue ASC LIMIT 1");
     $stmt->bind_param('s', $Username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -393,7 +393,7 @@ $LowestTotalRevenue = fetchProductWithLowestTotalRevenue($connection, $Username)
                     <td>$<?php echo number_format($row['StockValue'], 2); ?></td>
                     <td>$<?php echo number_format($row['SupplyValue'], 2); ?></td>
                     <td>$<?php echo number_format($row['InventoryValue'], 2); ?></td>
-                    <td>$<?php echo number_format($row['TotalRevenue'], 2); ?></td>
+                    <td>$<?php echo number_format($row['InventoryValue'], 2); ?></td>
                     <td><?php echo date('Y-m-d H:i:s', strtotime($row['Date'])); ?></td>
                 </tr>
             <?php endwhile; ?>

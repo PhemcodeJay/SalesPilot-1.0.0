@@ -56,9 +56,8 @@ $connection->query($disableSafeUpdateQuery);
 
 $Username = $_SESSION['Username'];
 
-
 // Use the sales_pilot database
-$useDatabaseQuery = "USE sales_pilot";
+$useDatabaseQuery = "USE `sales-pilot`";
 $connection->query($useDatabaseQuery);
 
 
